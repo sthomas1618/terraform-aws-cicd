@@ -150,13 +150,14 @@ data "aws_iam_policy_document" "codebuild" {
 }
 
 module "codebuild" {
-  source                      = "git::https://github.com/cloudposse/terraform-aws-codebuild.git?ref=tags/0.17.0"
+  source                      = "git::https://github.com/sthomas1618/terraform-aws-codebuild.git?ref=master"
   enabled                     = var.enabled
   namespace                   = var.namespace
   name                        = var.name
   stage                       = var.stage
   build_image                 = var.build_image
   build_compute_type          = var.build_compute_type
+  build_type                  = var.build_type
   buildspec                   = var.buildspec
   delimiter                   = var.delimiter
   attributes                  = concat(var.attributes, ["build"])
