@@ -158,3 +158,33 @@ variable "force_destroy" {
   default     = false
   description = "Force destroy the CI/CD S3 bucket even if it's not empty"
 }
+
+variable "webhook_enabled" {
+  type        = bool
+  description = "Set to false to prevent the module from creating any webhook resources"
+  default     = true
+}
+
+variable "webhook_target_action" {
+  type        = string
+  description = "The name of the action in a pipeline you want to connect to the webhook. The action must be from the source (first) stage of the pipeline"
+  default     = "Source"
+}
+
+variable "webhook_authentication" {
+  type        = string
+  description = "The type of authentication to use. One of IP, GITHUB_HMAC, or UNAUTHENTICATED"
+  default     = "GITHUB_HMAC"
+}
+
+variable "webhook_filter_json_path" {
+  type        = string
+  description = "The JSON path to filter on"
+  default     = "$.ref"
+}
+
+variable "webhook_filter_match_equals" {
+  type        = string
+  description = "The value to match on (e.g. refs/heads/{Branch})"
+  default     = "refs/heads/{Branch}"
+}
