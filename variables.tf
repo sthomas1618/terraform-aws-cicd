@@ -159,6 +159,18 @@ variable "force_destroy" {
   description = "Force destroy the CI/CD S3 bucket even if it's not empty"
 }
 
+variable "github_webhooks_token" {
+  type        = string
+  default     = ""
+  description = "GitHub OAuth Token with permissions to create webhooks. If not provided, can be sourced from the `GITHUB_TOKEN` environment variable"
+}
+
+variable "github_webhook_events" {
+  type        = list(string)
+  description = "A list of events which should trigger the webhook. See a list of [available events](https://developer.github.com/v3/activity/events/types/)"
+  default     = ["push"]
+}
+
 variable "webhook_enabled" {
   type        = bool
   description = "Set to false to prevent the module from creating any webhook resources"
