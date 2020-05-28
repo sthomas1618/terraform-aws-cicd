@@ -282,7 +282,7 @@ locals {
 
 resource "aws_codepipeline_webhook" "webhook" {
   count           = var.webhook_enabled ? 1 : 0
-  name            = module.codepipeline_label.id
+  name            = module.label.id
   authentication  = var.webhook_authentication
   target_action   = var.webhook_target_action
   target_pipeline = join("", aws_codepipeline.default.*.name)
